@@ -11,6 +11,7 @@ using GetADoctor.Data.Services;
 using GetADoctor.Models;
 using AutoMapper;
 using GetADoctor.Web.Infrastructure.FileHelper;
+using GetADoctor.Data.Infrastructure;
 
 namespace GetADoctor.Web.Areas
 {
@@ -137,6 +138,36 @@ namespace GetADoctor.Web.Areas
                 }
             }
 
+            return View();
+        }
+
+        public ActionResult PrescriptionImage(int? id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PrescriptionImage(HttpPostedFileBase file, string appointment_id)
+        {
+            if (file != null && file.ContentLength > 0)
+                try
+                {
+                    var dir = User.Identity.GetUserName();
+                    string up_pic = FileUtils.UploadFile(file);
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    int ap_id = Convert.ToInt32(appointment_id);
+                    var appointment = db.Appointments.Where(x => x.AppointmentId == ap_id).First();
+                    appointment.PrescriptionImagePath = up_pic;
+                    db.SaveChanges();
+                    return RedirectToAction("Appointments", "Patient");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                }
+            else
+            {
+                ViewBag.Message = "You have not specified a file.";
+            }
             return View();
         }
 

@@ -28,6 +28,9 @@ _ReSharper*/
 *.mdf
 *.ldf
 *.log
+packages
+packages/
+packages*
 packages/*.*.*
 */Uploads/
 */Content/Uploads/*

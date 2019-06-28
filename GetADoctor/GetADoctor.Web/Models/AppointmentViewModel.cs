@@ -32,6 +32,9 @@ namespace GetADoctor.Web.Models
         [Display(Name = "UID")]
         public String Uid { get; set; }
 
+        [Display(Name = "Prescription")]
+        public String PrescriptionImagePath { get; set; }
+
         [Display(Name = "Doctor")]
         public int DoctorId { get; set; }
         public virtual Doctor Doctor { get; set; }

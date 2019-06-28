@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "PrescriptionImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.Message != null)
+{
+    <h2>@ViewBag.Message</h2>
+}
+<form action="~/Manage/PrescriptionImage" method="post" enctype="multipart/form-data">
+    <input type='text' id='txtId' name='appointment_id' />
+    <input type="file" name="file" id="file" />
+
+    <input type="submit" />
+</form>
+<style>
+    .container.body-content{
+        margin-top:240px;
+    }
+</style>
+<script>
+    (function () {
+        var ar = window.location.toString().split('/');
+        document.getElementById('txtId').value = ar[ar.length - 1];
+    })()
+</script>

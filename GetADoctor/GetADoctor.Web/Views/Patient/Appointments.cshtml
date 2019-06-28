@@ -16,6 +16,7 @@
             <th>@Html.DisplayNameFor(model => model.Doctor.FirstName)</th>
             <th>@Html.DisplayNameFor(model => model.Serial)</th>
             <th>@Html.DisplayNameFor(model => model.Doctor.Speciality.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.PrescriptionImagePath)</th>
             <th>Action</th>
         </tr>
         @foreach (var item in Model)
@@ -26,6 +27,12 @@
                 <td>@Html.DisplayFor(modelItem => item.Doctor.FirstName)</td>
                 <td>@Html.DisplayFor(modelItem => item.Serial)</td>
                 <td>@Html.DisplayFor(modelItem => item.Doctor.Speciality.Name)</td>
+                <td>
+                    @Html.ActionLink("Update", "PrescriptionImage", "Manage", new { id = item.AppointmentId }, null)
+                    <a href="../Content/Uploads/Account/@Html.DisplayFor(modelItem => item.PrescriptionImagePath)" target="_blank">
+                        <img height="100" width="100" src="../Content/Uploads/Account/@Html.DisplayFor(modelItem => item.PrescriptionImagePath)" />
+                    </a>                    
+                </td>                
                 <td>@Html.ActionLink("Cancel", "CancelAppointment", new { id = item.AppointmentId })</td>
             </tr>
         }

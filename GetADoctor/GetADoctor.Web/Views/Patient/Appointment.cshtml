@@ -61,7 +61,11 @@
                     @name
                 </dd>
                 <dt>Speciality</dt>
-                <dd>@Model.Doctor.Speciality.Name</dd>
+                @if (@Model.Doctor.Speciality != null)
+                {
+                    <dd>@Model.Doctor.Speciality.Name</dd>
+                }
+                
                 <dt>Age</dt>
                 <dd>@Model.Doctor.Age</dd>
                 <dt>Gender</dt>

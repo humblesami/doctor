@@ -34,7 +34,7 @@ namespace GetADoctor.Web.Models
         public String Gender { get; set; }
 
         [Required]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Entered phone number is not valid.")]
+        [RegularExpression(@"^\d{1,15}$", ErrorMessage = "Entered phone number is not valid 2.")]
         public String MobileNumber { get; set; }
 
         public String ImageUrl { get; set; }

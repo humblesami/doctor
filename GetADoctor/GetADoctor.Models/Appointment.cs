@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,6 +13,8 @@ namespace GetADoctor.Models
         public String Date { get; set; }
         public int Serial { get; set; }
         public String Uid { get; set; }
+        
+        public String PrescriptionImagePath { get; set; }
 
         [ForeignKey("Patient")]
         public int PatientId { get; set; }
