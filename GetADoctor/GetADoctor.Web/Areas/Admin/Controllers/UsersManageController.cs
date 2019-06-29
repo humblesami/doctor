@@ -34,12 +34,13 @@ namespace GetADoctor.Web.Areas.Admin.Controllers
             
             List<string> roles = new List<string>();
             foreach(var item in users)
-            {
+            {                
                 var user_role_id = item.Roles.FirstOrDefault().RoleId;
                 string role_name = db.Roles.Where(x => x.Id == user_role_id).FirstOrDefault().Name;
                 roles.Add(role_name);
             }
             ViewBag.roles = roles;
+
             return View(users);
         }
     }

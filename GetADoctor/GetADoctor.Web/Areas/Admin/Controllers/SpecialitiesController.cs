@@ -27,6 +27,10 @@ namespace GetADoctor.Web.Areas.Admin.Controllers
         {
             var speciliaties = this._specialityservice.GetSpecialities();
              var model = AutoMapper.Mapper.Map<IEnumerable<SpecialityViewModel>>(speciliaties);
+            /*foreach (var item in model)
+            {
+                item.Name = "Diffe";
+            }*/
             return View(model);
         }
 

@@ -50,8 +50,13 @@ namespace GetADoctor.Web.Areas
         {
             var patientId = Convert.ToInt32(pid);
             var appointments = this._patientService.GetAppointmentsByPatientId(patientId);
-            appointments = appointments.Where(x => x.Status =="Completed").ToList();
+            //appointments = appointments.Where(x => x.Status =="Completed").ToList();
+            appointments = appointments.ToList();
             var model = Mapper.Map<IEnumerable<AppointmentViewModel>>(appointments);
+            /*foreach (var item in model)
+            {
+                item.Status = "Completed or any";
+            }*/
             return View(model);
         }
 
