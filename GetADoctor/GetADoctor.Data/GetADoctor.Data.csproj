@@ -62,9 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201612162047030_intialcreate.cs" />
-    <Compile Include="Migrations\201612162047030_intialcreate.Designer.cs">
-      <DependentUpon>201612162047030_intialcreate.cs</DependentUpon>
+    <Compile Include="Migrations\201906291103342_first.cs" />
+    <Compile Include="Migrations\201906291103342_first.Designer.cs">
+      <DependentUpon>201906291103342_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906291108454_m2.cs" />
+    <Compile Include="Migrations\201906291108454_m2.Designer.cs">
+      <DependentUpon>201906291108454_m2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,11 +94,6 @@
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612162047030_intialcreate.resx">
-      <DependentUpon>201612162047030_intialcreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -103,6 +102,14 @@
       <Project>{37021aac-21d1-442d-9534-3c4ebc696d21}</Project>
       <Name>GetADoctor.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906291103342_first.resx">
+      <DependentUpon>201906291103342_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906291108454_m2.resx">
+      <DependentUpon>201906291108454_m2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

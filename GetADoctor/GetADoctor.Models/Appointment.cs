@@ -19,6 +19,8 @@ namespace GetADoctor.Models
         [ForeignKey("Patient")]
         public int PatientId { get; set; }
         public virtual Patient Patient { get; set; }
+        
+        public string Status { get; set; }
 
         [ForeignKey("Doctor")]
         public int DoctorId { get; set; }

@@ -46,6 +46,15 @@ namespace GetADoctor.Web.Areas
             return View(model);
         }
 
+        public ActionResult PastAppointments(string pid)
+        {
+            var patientId = Convert.ToInt32(pid);
+            var appointments = this._patientService.GetAppointmentsByPatientId(patientId);
+            appointments = appointments.Where(x => x.Status =="Completed").ToList();
+            var model = Mapper.Map<IEnumerable<AppointmentViewModel>>(appointments);
+            return View(model);
+        }
+
         // GET: Patient/Appointment
         public ActionResult Appointment(int? id)
         {

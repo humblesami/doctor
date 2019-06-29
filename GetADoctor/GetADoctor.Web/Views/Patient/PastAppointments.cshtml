@@ -28,7 +28,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Serial)</td>
                 <td>@Html.DisplayFor(modelItem => item.Doctor.Speciality.Name)</td>
                 <td>
-                    @if (item.Status == "Completed")
+                    @if (item.VisitingTime != null && DateTime.Parse(item.VisitingTime) < DateTime.Now)
                     {
                         @Html.ActionLink("Update", "PrescriptionImage", "Manage", new { id = item.AppointmentId }, null)
                         <a href="../Content/Uploads/Account/@Html.DisplayFor(modelItem => item.PrescriptionImagePath)" target="_blank">
@@ -40,7 +40,7 @@
                         <b>Upload when visited</b>
                     }
 
-                </td>                
+                </td>
                 <td>@Html.ActionLink("Cancel", "CancelAppointment", new { id = item.AppointmentId })</td>
             </tr>
         }

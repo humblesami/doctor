@@ -8,7 +8,7 @@
     <h2>@ViewBag.Message</h2>
 }
 <form action="~/Manage/PrescriptionImage" method="post" enctype="multipart/form-data">
-    <input type='text' id='txtId' name='appointment_id' />
+    <input type='text' value="@ViewBag.Message" id='txtId' name='appointment_id' />
     <input type="file" name="file" id="file" />
 
     <input type="submit" />
@@ -19,8 +19,9 @@
     }
 </style>
 <script>
-    (function () {
-        var ar = window.location.toString().split('/');
-        document.getElementById('txtId').value = ar[ar.length - 1];
-    })()
+    //function abc() {
+    //    var ar = window.location.toString().split('/');
+    //    document.getElementById('txtId').value = ar[ar.length - 1];
+    //}
+    //abc();
 </script>

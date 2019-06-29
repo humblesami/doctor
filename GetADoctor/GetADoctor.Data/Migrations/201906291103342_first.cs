@@ -3,7 +3,7 @@ namespace GetADoctor.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class intialcreate : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
@@ -59,6 +59,8 @@ namespace GetADoctor.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        ProfilePicUrl = c.String(),
+                        LastLoginTime = c.DateTime(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -113,16 +115,19 @@ namespace GetADoctor.Data.Migrations
                         UIN = c.String(nullable: false, maxLength: 10),
                         FirstName = c.String(),
                         LastName = c.String(),
-                        Specialization = c.String(),
                         Age = c.Int(nullable: false),
                         Gender = c.String(),
                         MobileNumber = c.String(),
                         ImageUrl = c.String(),
-                        SpecialityId = c.Int(nullable: false),
+                        YearsOfExperience = c.String(),
+                        ShortProfile = c.String(),
+                        Expertise = c.String(),
+                        Website = c.String(),
+                        SpecialityId = c.Int(),
                         UserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.DoctorId)
-                .ForeignKey("dbo.Specialities", t => t.SpecialityId, cascadeDelete: true)
+                .ForeignKey("dbo.Specialities", t => t.SpecialityId)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UIN, unique: true)
                 .Index(t => t.SpecialityId)
@@ -207,7 +212,10 @@ namespace GetADoctor.Data.Migrations
                         Date = c.String(),
                         Serial = c.Int(nullable: false),
                         Uid = c.String(),
+                        PrescriptionImagePath = c.String(),
                         PatientId = c.Int(nullable: false),
+                        Status = c.String(),
+                        Test2 = c.String(),
                         DoctorId = c.Int(nullable: false),
                         CreatedOn = c.DateTime(nullable: false),
                         UpdatedOn = c.DateTime(),

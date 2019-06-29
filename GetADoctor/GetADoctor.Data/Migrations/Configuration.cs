@@ -1,18 +1,21 @@
-﻿using GetADoctor.Data.Infrastructure;
+using System;
+using GetADoctor.Data.Infrastructure;
 using GetADoctor.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GetADoctor.Data.Migrations
 {
-    public sealed class Configuration : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    
+    internal sealed class Configuration : DbMigrationsConfiguration<GetADoctor.Data.Infrastructure.ApplicationDbContext>
     {
+        public Configuration()
+        {
+            //AutomaticMigrationsEnabled = false;
+        }
+
         protected override void Seed(ApplicationDbContext context)
         {
             foreach (UserRoles role in Enum.GetValues(typeof(UserRoles)))

@@ -143,6 +143,7 @@ namespace GetADoctor.Web.Areas
 
         public ActionResult PrescriptionImage(int? id)
         {
+            ViewBag.appointment_id = id;
             return View();
         }
         [HttpPost]
@@ -151,13 +152,18 @@ namespace GetADoctor.Web.Areas
             if (file != null && file.ContentLength > 0)
                 try
                 {
-                    var dir = User.Identity.GetUserName();
                     string up_pic = FileUtils.UploadFile(file);
-                    ApplicationDbContext db = new ApplicationDbContext();
+
+                    
                     int ap_id = Convert.ToInt32(appointment_id);
+
+                    ApplicationDbContext db = new ApplicationDbContext();
                     var appointment = db.Appointments.Where(x => x.AppointmentId == ap_id).First();
+                    
                     appointment.PrescriptionImagePath = up_pic;
                     db.SaveChanges();
+
+
                     return RedirectToAction("Appointments", "Patient");
                 }
                 catch (Exception ex)
@@ -167,7 +173,8 @@ namespace GetADoctor.Web.Areas
             else
             {
                 ViewBag.Message = "You have not specified a file.";
-            }
+            }            
+            ViewBag.appointment_id = appointment_id;
             return View();
         }
 

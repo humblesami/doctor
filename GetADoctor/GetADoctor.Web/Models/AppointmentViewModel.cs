@@ -43,6 +43,8 @@ namespace GetADoctor.Web.Models
         public int PatientId { get; set; }
         public virtual Patient Patient { get; set; }
 
+        public string Status { get; set; }
+
         public IEnumerable<SelectListItem> ScheduleDates { get; set; }
     }
 }
